@@ -9,7 +9,7 @@ import requests
 
 
 # Récupération de la clé API NASA  | link : https://api.nasa.gov/
-KEY = "" 
+KEY = ""
 
 # Récupération de la météo sur Mars en format json
 url_m = f"https://api.nasa.gov/insight_weather/?api_key={KEY}&feedtype=json&ver=1.0"
@@ -25,9 +25,12 @@ fournit les données météo suivantes (sur Mars) :
 
 Ces données sont disponibles pour les 7 derniers sols (jours marsiens)
 """
-temperature = data_m.get("675").get("AT").get("av")
-print("Sur Mars, au jour 675 il faisait", temperature, "C°")
+sol_keys = data_m.get("sol_keys", []) # Liste des sols disponibles
 
+if sol_keys :
+    dernier_sol = sol_keys[-1] # on choisi le plus récent
+    temperature = data_m.get(str(dernier_sol)).get("AT").get("av")
+    print("Sur Mars, au jour",dernier_sol,"il faisait", temperature, "C°")
 
-
-
+else :
+    print("pas de données disponibles pour Mars.")
