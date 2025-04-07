@@ -11,7 +11,7 @@ from io import BytesIO
 from datetime import datetime, timedelta
 
 # Récupération de la clé API NASA
-KEY = "8CujwWYf766vDRP7PwOfjO5J3GDjwc5RgGdVf0BZ"
+KEY = ""
 
 # Récupération de la météo sur Mars en format json
 url_m = f"https://api.nasa.gov/insight_weather/?api_key={KEY}&feedtype=json&ver=1.0"
